@@ -21,7 +21,7 @@ class _OnboardMainState extends State<OnboardMain> {
       children: [
         Onboard(carouselController),
         Onboard1(carouselController),
-        Onboard2()
+        Onboard2(carouselController)
       ],
       // enableAutoSlider: true,
       scrollPhysics: NeverScrollableScrollPhysics(),

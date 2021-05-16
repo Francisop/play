@@ -1,7 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_carousel_slider/carousel_slider.dart';
+import 'package:playsports/ui/auth/register.dart';
 
 class Onboard2 extends StatefulWidget {
+  CarouselSliderController carouselController;
+  Onboard2(this.carouselController);
   @override
   _Onboard2State createState() => _Onboard2State();
 }
@@ -10,10 +14,39 @@ class _Onboard2State extends State<Onboard2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            widget.carouselController.previousPage();
+          },
+        ),
+        actions: [TextButton(onPressed: () {}, child: Text('Skip'))],
+      ),
       body: Column(
         children: [
           SizedBox(
-            height: 10,
+            height: 20,
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              padding: EdgeInsets.all(15.0),
+              child: Text(
+                "Everybody Wins",
+                style: TextStyle(fontSize: 35.0, color: Colors.orange),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Text(
+                "Venues owners can turn their vacant facilities into money makers (similar to Airbnb).",
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ),
           ),
           Container(
             padding: EdgeInsets.all(10.0),
@@ -25,63 +58,26 @@ class _Onboard2State extends State<Onboard2> {
               // imageUrl:
             ),
           ),
-          Center(
-            child: Container(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                "Everybody wins",
-                style: TextStyle(fontSize: 30.0,color: Colors.pink),
-              ),
-            ),
-          ),
-          Center(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: Text(
-                "Venues owners can turn their vacant facilities into money makers (similar to Airbnb)",
-                style: TextStyle(fontSize: 20.0),
-              ),
-            ),
-          ),
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: Container(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Colors.green[900],
-                                style: BorderStyle.solid)),
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Create Account',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 15.0),
-                          ),
-                        )),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.25,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.pink[900],
-                              style: BorderStyle.solid)),
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'login',
-                          style: TextStyle(color: Colors.white, fontSize: 15.0),
-                        ),
+                    decoration: BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.circular(12)),
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (_) => Register()));
+                      },
+                      child: Text(
+                        'Get started',
+                        style: TextStyle(color: Colors.white, fontSize: 15.0),
                       ),
-                    ),
-                  ],
-                )),
+                    )),
               ),
             ),
           ),

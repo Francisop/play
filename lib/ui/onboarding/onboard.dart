@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
-import 'package:playsports/style.dart';
+import 'package:playsports/ui/auth/register.dart';
 
 class Onboard extends StatefulWidget {
   CarouselSliderController carouselController;
@@ -14,10 +14,20 @@ class _OnboardState extends State<Onboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => Register()));
+              },
+              child: Text('Skip'))
+        ],
+      ),
       body: Column(
         children: [
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           Container(
             padding: EdgeInsets.all(10.0),
@@ -32,21 +42,23 @@ class _OnboardState extends State<Onboard> {
           SizedBox(
             height: 10,
           ),
-          Center(
+          Align(
+            alignment: Alignment.centerLeft,
             child: Container(
               padding: EdgeInsets.all(15.0),
               child: Text(
-                'Endless selections',
-                style: TextStyle(fontSize: 30.0, color: Colors.orange),
+                'Endless Selections',
+                style: TextStyle(fontSize: 35.0, color: Colors.orange),
               ),
             ),
           ),
-          Center(
+          Align(
+            alignment: Alignment.centerLeft,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
               child: Text(
                 'Players are surrounded with endless classes at any given time.',
-                style: TextStyle(fontSize:20.0),
+                style: TextStyle(fontSize: 20.0),
               ),
             ),
           ),
